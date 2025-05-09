@@ -16,9 +16,6 @@ class Student(Person):
     def registered_for_course(self, course):
         self.course.append(course)
 
-
-
-
 class Instructor(Person):
     def __init__(self, my_name, my_age, my_emp_id, my_salary):
         super().__init__(my_name, my_age)
@@ -46,3 +43,37 @@ class Course:
 
     def set_instructor(self, instructor):
         self.instructors.append(instructor)
+
+
+class Department:
+    def __init__(self, d_name):
+        self.name = d_name
+        self.course = []
+
+    def add_course(self, course):
+        self.course.append(course)
+
+
+c1 = Course(101, "Python")
+c2 = Course(102, "Java")
+d1 = Department("Computer Science")
+d1.add_course(c1.name)
+d1.add_course(c2.name)
+# --------------- Student  1 -----------------
+s1 = Student("Sadaf", 22, "giaic121")
+s1.registered_for_course(c1.name)
+c1.add_student(s1.name)
+i1 = Instructor("Ali", 30, "emp-101", 50000)
+c1.set_instructor(i1.name)
+# --------------- Student  2 -----------------
+s2 = Student("Aleena", 23, "giaic122")
+i2 = Instructor("Sir Hamzah", 23, "emp-102", 70000)
+s2.registered_for_course(c2.name)
+c2.add_student(s2.name)
+c2.set_instructor(i2.name)
+# --------------- Displaying Details -----------------
+print(f"Department 1 : {d1.__dict__}")
+print(f"Course 1: {c1.__dict__} ")
+print(f"Course 2: {c2.__dict__} ")
+print(f"Student 1: {s1.__dict__} ")
+print(f"Student 2: {s2.__dict__} ")
